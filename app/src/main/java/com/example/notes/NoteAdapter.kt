@@ -18,7 +18,7 @@ class NoteAdapter (val listNote: ArrayList<Note>, var context: Context): Recycle
             v.findViewById<TextView>(R.id.tvIsiRcy).text = note.isi
             v.setOnClickListener {
                 Toast.makeText(v.context, "${note.judul}: ${note.tanggal}", Toast.LENGTH_SHORT).show()
-                val intent = Intent(context, NoteActivity::class.java)
+                val intent = Intent(context, EditNoteActivity::class.java)
                 intent.putExtra("judul",note.judul)
                 intent.putExtra("tanggal",note.tanggal)
                 intent.putExtra("isi",note.isi)

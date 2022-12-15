@@ -41,27 +41,8 @@ class NoteActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val judul = intent.getStringExtra("judul").toString()
-        val tanggal = intent.getStringExtra("tanggal").toString()
-        val isi = intent.getStringExtra("isi").toString()
-
-        val title = binding.etTitleNote
-        title.setText(judul)
-        val date = binding.tvTanggalNote
-        date.setText(tanggal)
-        val content = binding.etNote
-        content.setText(isi)
-
         binding.btnDelete.setOnClickListener {
-            val query = firestore?.collection("Notes")?.whereEqualTo("tanggal",date)
-                ?.get()
-            query?.addOnSuccessListener {
-                for(document in it) {
-                    firestore?.collection("Notes")?.document(document.id)?.delete()?.addOnSuccessListener {
-                        Toast.makeText(this, "Data berhasil dihapus", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
+
         }
     }
 }
